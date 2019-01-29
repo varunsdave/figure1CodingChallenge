@@ -1,12 +1,14 @@
-import { Injectable } from "@angular/core";
-import { RestClientService } from "./rest-client.service";
-import { Observable, of } from "rxjs";
+import { Injectable } from '@angular/core';
+import { RestClientService } from './rest-client.service';
+import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
+import {UiPost} from '../models/ui-post.model';
+import {Feed, FeedData, Comment} from '../models/feed.model';
 
 @Injectable()
 export class FeedPostService {
 
-    _posts: UiPost
+    _posts: UiPost;
     constructor(private restClientService: RestClientService) {
         this._posts = {};
     }
@@ -29,7 +31,7 @@ export class FeedPostService {
                             id: comment.id,
                             text: comment.text
                         });
-                    })
+                    });
                     this._posts[feed.postID].comments = comments;
                 }
             });
@@ -45,7 +47,7 @@ export class FeedPostService {
 
     get posts(): Observable<Feed> {
         return this.fetchData();
-    } 
+    }
 
     public paginationNext(nextUrl: string) {
         this.fetchData(nextUrl);
@@ -53,39 +55,6 @@ export class FeedPostService {
 
 }
 
-export interface UiPost {
-    [id: string]: FeedData
-}
 
-export interface Feed {
-    nextUrl: string;
-    data: FeedData[];
-}
 
-export interface FeedData {
-    id: string;
-    username: string;
-    caption: string;
-    image: {
-      post: string;
-      profile: string;
-    };
-    stats: {
-      follow: number;
-      views: number;
-      star: number;
-    };
-    comments: Comment[]
-  }
 
-export interface Comment {
-    profile: UiProfile;
-    id: string;
-    text: string;
-}
-
-export interface UiProfile {
-    username: string;
-    profileImageUrl: string;
-}
-  

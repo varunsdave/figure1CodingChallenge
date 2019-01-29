@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { RestClientService } from 'src/app/core/services/rest-client.service';
 import {map } from 'rxjs/internal/operators';
 import { FeedPostService } from 'src/app/core/services/feedPost.service';
+import {Observable} from "rxjs/internal/Observable";
+import {FeedData} from "../../core/models/feed.model";
 @Component({
   selector: 'app-full-layout',
   templateUrl: './full-layout.component.html',
   styleUrls: ['./full-layout.component.scss']
 })
 export class FullLayoutComponent implements OnInit {
-  postsAsync;
+  postsAsync: Observable<FeedData[]>;
   posts: any[];
   totalPosts: number;
   postCount: number;
