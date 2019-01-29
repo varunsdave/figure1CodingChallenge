@@ -6,6 +6,8 @@ This project was generated for Figure1 Coding Challenge. It
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Start
+To start, run npm install && npm start start. By default it will run on local machine. 
 
 ## Build
 
