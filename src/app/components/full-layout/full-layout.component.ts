@@ -15,8 +15,7 @@ export class FullLayoutComponent implements OnInit {
   nextUrl: string;
 
   constructor(
-    private feedService: FeedPostService,
-    private restClientService: RestClientService) { }
+    private feedService: FeedPostService) { }
 
   ngOnInit() {
     this.feedService.fetchData;

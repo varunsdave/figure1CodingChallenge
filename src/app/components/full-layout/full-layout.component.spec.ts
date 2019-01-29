@@ -7,6 +7,8 @@ import { CommentContainerComponent } from 'src/app/card/components/comment-conta
 import { ProfileImageContainerComponent } from 'src/app/card/components/profile-image-container/profile-image-container.component';
 import { StatsContainerComponent } from 'src/app/card/components/stats-container/stats-container.component';
 import { PostImageContainerComponent } from 'src/app/card/components/post-image-container/post-image-container.component';
+import { RestClientService } from 'src/app/core/services/rest-client.service';
+import { FeedPostService } from 'src/app/core/services/feedPost.service';
 
 describe('FullLayoutComponent', () => {
   let component: FullLayoutComponent;
@@ -26,6 +28,13 @@ describe('FullLayoutComponent', () => {
   }));
 
   beforeEach(() => {
+    TestBed.overrideComponent(FullLayoutComponent, {
+      set: {
+        providers: [
+          {provide: FeedPostService, useClass: null}
+        ]
+      }
+    })
     fixture = TestBed.createComponent(FullLayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
