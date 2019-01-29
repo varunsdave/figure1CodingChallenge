@@ -8,7 +8,18 @@ import { ProfileImageContainerComponent } from 'src/app/card/components/profile-
 import { StatsContainerComponent } from 'src/app/card/components/stats-container/stats-container.component';
 import { PostImageContainerComponent } from 'src/app/card/components/post-image-container/post-image-container.component';
 import { RestClientService } from 'src/app/core/services/rest-client.service';
-import { FeedPostService } from 'src/app/core/services/feedPost.service';
+import { FeedPostService, Feed } from 'src/app/core/services/feedPost.service';
+import { Observable, of } from 'rxjs';
+
+class MockFeedPostService extends FeedPostService {
+
+  fetchData(): Observable<Feed> {
+    return of({
+      nextUrl: '',
+      data: []
+    });
+  }
+}
 
 describe('FullLayoutComponent', () => {
   let component: FullLayoutComponent;
@@ -21,7 +32,11 @@ describe('FullLayoutComponent', () => {
       CommentContainerComponent,
       ProfileImageContainerComponent,
       PostImageContainerComponent,
-      StatsContainerComponent ]
+      StatsContainerComponent ],
+      providers: [
+        {provide: FeedPostService, useClass: MockFeedPostService},
+        {provide: RestClientService}
+      ]
     
     })
     .compileComponents();
