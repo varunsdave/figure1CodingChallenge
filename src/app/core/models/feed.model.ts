@@ -30,3 +30,15 @@ export interface UiProfile {
   username: string;
   profileImageUrl: string;
 }
+
+
+export interface ServerResponseFeedData  {
+  skip: number;
+  count: number;
+  _links: {
+    next: {
+      url: string;
+    }
+  }
+  feed: any[]
+}
