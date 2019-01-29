@@ -1,0 +1,18 @@
+<div class="card">
+  <div *ngIf="feedData.type==='post'" >
+    <div class="user-info-container">
+        <app-profile-image-container [profileImageUrl]="feedData.image.profile"
+        [profileName]="feedData.username"></app-profile-image-container> 
+        <app-stats-container [stats]="feedData.stats"></app-stats-container>
+    </div>
+    <div class="post-image-conainer">
+        <app-post-image-container [postImageUrl]="feedData.image.post"> </app-post-image-container>
+    </div>
+    <div class="caption-container">
+      {{feedData.caption}}
+    </div>
+    <div class="comments-section-container" *ngFor="let comment of feedData.comments">
+        <app-comment-container [comment]="comment"></app-comment-container>
+    </div>
+  </div>
+</div>

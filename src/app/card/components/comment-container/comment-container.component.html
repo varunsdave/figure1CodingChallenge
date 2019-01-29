@@ -1,0 +1,9 @@
+<div class="comments-container">
+  <div class="comment-profile">
+      <app-profile-image-container [profileImageUrl]="comment.profile.profileImageUrl"
+          [profileName]="comment.profile.username"></app-profile-image-container> 
+  </div>
+  <div class="comment-text">
+    {{comment.text}}
+  </div>
+</div>

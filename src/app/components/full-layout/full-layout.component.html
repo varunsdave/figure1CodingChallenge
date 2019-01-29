@@ -1,0 +1,10 @@
+<p>
+  Welcome to the figure 1 coding challenge, by Varun Dave. 
+</p>
+
+<ng-container>
+  <div *ngFor="let postA of postsAsync | async">
+      <app-card-layout [feedData]="postA"></app-card-layout>
+  </div>
+</ng-container>
+<button (click)='nextFeed()'>Next</button>
